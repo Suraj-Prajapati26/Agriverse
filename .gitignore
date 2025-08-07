@@ -1,23 +1,21 @@
-# Ignore Eclipse metadata and build files
+# Ignore Eclipse/STS workspace settings
 .metadata/
-*.class
-*.log
-*.tmp
-*.swp
-.settings/
-bin/
+
+# Ignore zip and backup files
+*.zip
+*.tar.gz
+
+# Ignore build output
 target/
 build/
-.cache/
-.idea/
-.vscode/
 
-# Ignore OS/system files
+# Ignore OS-specific junk
 .DS_Store
 Thumbs.db
-*.bak
-*.old
 
-# Ignore files that cause permission issues
-*.lock
-*.data
+# Node modules if frontend uses React/Angular
+node_modules/
+
+# IntelliJ
+.idea/
+*.iml
