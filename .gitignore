@@ -1,0 +1,23 @@
+# Ignore Eclipse metadata and build files
+.metadata/
+*.class
+*.log
+*.tmp
+*.swp
+.settings/
+bin/
+target/
+build/
+.cache/
+.idea/
+.vscode/
+
+# Ignore OS/system files
+.DS_Store
+Thumbs.db
+*.bak
+*.old
+
+# Ignore files that cause permission issues
+*.lock
+*.data
