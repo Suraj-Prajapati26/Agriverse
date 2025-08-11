@@ -20,8 +20,11 @@ export function AuthProvider({ children }) {
   }, [token]);
 
   const fetchCurrentUser = async () => {
+    console.log("Fetching current user");
+    console.log(token);
     try {
       const response = await fetch('http://localhost:8081/api/users/me', {
+        method: "GET",
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -32,10 +35,9 @@ export function AuthProvider({ children }) {
         const userData = await response.json();
         setCurrentUser(userData);
       } else {
-        logout();
+        // logout();
       }
     } catch (error) {
-      console.error('Error loading user:', error);
       logout();
     } finally {
       setLoading(false);
@@ -43,6 +45,7 @@ export function AuthProvider({ children }) {
   };
 
   const login = async (email, password) => {
+    console.log("kndfjkd");
     try {
       const response = await fetch('http://localhost:8081/api/auth/login', {
         method: 'POST',
@@ -53,9 +56,9 @@ export function AuthProvider({ children }) {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem('token', data.token);
-        setToken(data.token);
+        const token = await response.text();
+        localStorage.setItem('token', token);
+        setToken(token);
         return { success: true };
       } else {
         const errorData = await response.json();

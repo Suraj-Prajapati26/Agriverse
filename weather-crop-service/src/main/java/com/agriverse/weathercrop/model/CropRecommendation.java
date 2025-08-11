@@ -33,4 +33,8 @@ public class CropRecommendation {
     private String generalAdvice;
     private Double mandiModalPrice;
     private LocalDate recommendationDate;
+    
+    private Long mandiPriceId;
+    private Long weatherLogId;
+
 }

@@ -13,7 +13,8 @@ import {
   FaBars,
   FaTimes,
   FaSeedling,
-  FaBell
+  FaBell,
+  FaUserShield
 } from 'react-icons/fa';
 import './Navbar.css';
 
@@ -97,6 +98,16 @@ function Navbar() {
                   <FaBell />
                   <span>Notifications</span>
                 </Link>
+                {currentUser.role === 'Admin' && (
+                  <Link 
+                    to="/admin" 
+                    className={`nav-link ${isActive('/admin') ? 'active' : ''}`}
+                    onClick={closeMenu}
+                  >
+                    <FaUserShield />
+                    <span>Admin</span>
+                  </Link>
+                )}
                 <Link 
                   to="/profile" 
                   className={`nav-link ${isActive('/profile') ? 'active' : ''}`}

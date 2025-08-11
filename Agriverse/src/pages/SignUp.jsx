@@ -20,7 +20,8 @@ function SignUp() {
     phone: '',
     password: '',
     confirmPassword: '',
-    location: ''
+    location: '',
+    role: 'Farmer'  // Default to Farmer
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -59,7 +60,13 @@ function SignUp() {
     }
 
     const { confirmPassword, ...userData } = formData;
-    const result = await register(userData);
+    // Ensure data matches the required format
+    const formattedData = {
+      ...userData,
+      role: userData.role || 'Farmer' // Default to Farmer if not specified
+    };
+    
+    const result = await register(formattedData);
     
     if (result.success) {
       setSuccess('Registration successful! Please sign in to continue.');
@@ -157,6 +164,24 @@ function SignUp() {
                 placeholder="Enter your location"
                 required
               />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">
+                <FaUser />
+                Role
+              </label>
+              <select
+                name="role"
+                value={formData.role}
+                onChange={handleChange}
+                className="form-input"
+                required
+              >
+                <option value="Farmer">Farmer</option>
+                <option value="Admin">Admin</option>
+                <option value="Advisor">Advisor</option>
+              </select>
             </div>
 
             <div className="form-group">

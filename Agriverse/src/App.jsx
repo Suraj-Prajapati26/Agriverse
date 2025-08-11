@@ -11,6 +11,8 @@ import Weather from './pages/Weather';
 import Prediction from './pages/Prediction';
 import Profile from './pages/Profile';
 import Notifications from './pages/Notifications';
+import AdminDashboard from './pages/Admin/AdminDashboard';
+import ProtectedAdminRoute from './components/ProtectedAdminRoute';
 import './App.css';
 
 function App() {
@@ -29,6 +31,14 @@ function App() {
               <Route path="/prediction" element={<Prediction />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/notifications" element={<Notifications />} />
+              <Route 
+                path="/admin" 
+                element={
+                  <ProtectedAdminRoute>
+                    <AdminDashboard />
+                  </ProtectedAdminRoute>
+                } 
+              />
             </Routes>
           </main>
           <Footer />

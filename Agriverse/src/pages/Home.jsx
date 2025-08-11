@@ -70,7 +70,7 @@ function Home() {
 
       if (currentUser && token) {
         // Load user orders
-        const ordersResponse = await fetch('http://localhost:8082/api/orders/my', {
+    const ordersResponse = await fetch(`http://localhost:8082/api/orders/user/${currentUser.id}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
